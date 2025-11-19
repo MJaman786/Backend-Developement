@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Enrollment Form</title>
+
+    <!-- Poppins Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- Root Variables & Base Setup --- */
+        :root {
+            --primary-color: #007bff;
+            --success-color: #28a745;
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --border-color: #e9ecef;
+            --radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* --- Main Form Card Container --- */
+        .form-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+        }
+
+        .form-container:hover {
+            transform: translateY(-5px);
+        }
+
+        /* --- Header Styling --- */
+        h1 {
+            color: var(--primary-color);
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* --- Form Grid Layout (Responsive) --- */
+        .form-grid {
+            display: grid;
+            /* Creates a responsive grid: 2 columns on large screens, 1 on small */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* Ensure Remarks/Textarea spans the full width on all devices */
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* --- Input Group Styling --- */
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            z-index: 5;
+            /* Ensure icon is above the select/input */
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            /* Added left padding for icon */
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        /* Remove icon space for textarea as it's full-width */
+        .form-group.full-width textarea {
+            padding: 12px 15px;
+        }
+
+        /* --- CUSTOM DROPDOWN STYLING --- */
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper select {
+            /* Hide the default browser arrow */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            /* Give extra padding on the right for the custom arrow icon */
+            padding-right: 30px;
+            padding-left: 45px;
+            /* Ensure consistency with input field icons */
+        }
+
+        .select-wrapper::after {
+            content: "\f078";
+            /* Font Awesome unicode for fa-chevron-down */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            /* Allows the click to pass through to the select */
+            color: var(--primary-color);
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+
+        /* --- END CUSTOM DROPDOWN STYLING --- */
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* --- Submission Button Styling --- */
+        .form-actions {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .submit-btn {
+            background-color: var(--success-color);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #1e7e34;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.5);
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 650px) {
+            .form-container {
+                padding: 20px;
+                border-radius: 0;
+                box-shadow: none;
+                /* simpler look on small screens */
+            }
+
+            body {
+                padding: 0;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <h1><i class="fas fa-user-check"></i> New Student Registration</h1>
+
+        <form id="student-registration-form" action="/saveStudent" method="post">
+            <div class="form-grid">
+
+                <!-- fullName -->
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required>
+                    </div>
+                </div>
+
+                <!-- email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                    </div>
+                </div>
+
+                <!-- contactNumber -->
+                <div class="form-group">
+                    <label for="contactNumber">Contact Number</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-phone"></i>
+                        <input type="text" id="contactNumber" name="contactNumber" placeholder="e.g., 1234567890"
+                            required>
+                    </div>
+                </div>
+
+                <!-- course -->
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-code"></i>
+                        <div class="select-wrapper">
+                            <select id="course" name="course" required>
+                                <option value=""> Select Course </option>
+                                <option value="HTML">HTML</option>
+                                <option value="CSS">CSS</option>
+                                <option value="JS">JS (JavaScript)</option>
+                                <option value="React">React</option>
+                                <option value="Node">Node.js</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- batchCode -->
+                <div class="form-group">
+                    <label for="batchCode">Batch Code</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-tag"></i>
+                        <input type="text" id="batchCode" name="batchCode" placeholder="e.g., WEB-2025-C" required>
+                    </div>
+                </div>
+
+                <!-- joiningDate -->
+                <!-- <div class="form-group">
+                    <label for="joiningDate">Joining Date</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-calendar-alt"></i>
+                        <input type="date" id="joiningDate" name="joiningDate" required>
+                    </div>
+                </div> -->
+
+                <!-- remarks -->
+                <div class="form-group full-width">
+                    <label for="remarks">Remarks</label>
+                    <textarea id="remarks" name="remarks"
+                        placeholder="Any special notes, background, or learning goals..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Register Student
+                </button>
+            </div>
+        </form>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Student</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-color: #343a40;
+            --border-color: #e9ecef;
+            --border-radius: 10px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .modal-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .form-actions {
+            margin-top: 25px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .form-actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            background-color: var(--primary-color);
+        }
+
+        .cancel-btn {
+            background-color: var(--secondary-color);
+        }
+
+        .save-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .cancel-btn:hover {
+            background-color: #5a6268;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="modal-content">
+        <h2><i class="fas fa-edit"></i> Update Student</h2>
+
+        <form id="update-student-form" action="/updateStudent/<%= user._id %>" method="post">
+            <!-- Hidden ID field -->
+            <input type="hidden" name="_id" id="_id" value="<%= user._id %>" />
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" name="fullName" id="fullName" value="<%= user.fullName %>" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" value="<%= user.email %>" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="contactNumber">Contact Number</label>
+                    <input type="tel" name="contactNumber" id="contactNumber" value="<%= user.contactNumber %>"
+                        required />
+                </div>
+
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <select name="course" id="course" required>
+                        <option value="HTML" <%=user.course==='HTML' ? 'selected' : '' %>>HTML</option>
+                        <option value="CSS" <%=user.course==='CSS' ? 'selected' : '' %>>CSS</option>
+                        <option value="JS" <%=user.course==='JS' ? 'selected' : '' %>>JavaScript</option>
+                        <option value="React" <%=user.course==='React' ? 'selected' : '' %>>React</option>
+                        <option value="Node" <%=user.course==='Node' ? 'selected' : '' %>>Node.js</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="batchCode">Batch Code</label>
+                    <input type="text" name="batchCode" id="batchCode" value="<%= user.batchCode %>" required />
+                </div>
+
+                <div class="form-group" style="grid-column: 1 / -1;">
+                    <label for="remarks">Remarks</label>
+                    <textarea name="remarks" id="remarks"><%= user.remarks %></textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" class="cancel-btn">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+                <button type="submit" class="save-btn">
+                    <i class="fas fa-save"></i> Update Record
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

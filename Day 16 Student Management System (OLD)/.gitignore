@@ -1,0 +1,14 @@
+# Ignore the entire node_modules directory
+node_modules/
+
+# Ignore all files ending with .log
+*.log
+
+# Ignore a specific file
+my_config.js
+
+# Ignore a directory named 'temp' in any subdirectory
+**/temp/
+
+# Ignore the 'dist' directory in the root
+/dist/
