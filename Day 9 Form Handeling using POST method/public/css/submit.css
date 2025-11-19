@@ -1,0 +1,67 @@
+/* success-page.css */
+
+/* Minimal Black Theme */
+body {
+    background-color: #121212 !important; /* Very dark background */
+    color: #e0e0e0; /* Light text for contrast */
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Container styling */
+.submission-container {
+    background-color: #1e1e1e; /* Slightly lighter dark background for the card/container */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    transition: all 0.3s ease;
+}
+
+/* Confirmation Icon */
+.bi-check-circle-fill {
+    color: #4CAF50 !important; /* Use a distinct green for success */
+}
+
+/* Data Titles/Headers */
+.data-title {
+    color: #f0f0f0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-color: #333 !important; /* Darker line for the separator */
+}
+
+/* Data List (Bootstrap Definition List customization) */
+.data-list dt {
+    color: #a0a0a0; /* Muted color for the labels */
+    font-weight: 400;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.data-list dd {
+    font-weight: 500;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Button style */
+.btn-outline-light {
+    border-color: #555;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: #444;
+    border-color: #e0e0e0;
+    color: #fff;
+}
+
+/* Media Queries for responsiveness */
+@media (min-width: 768px) {
+    .submission-container {
+        padding: 50px;
+    }
+}

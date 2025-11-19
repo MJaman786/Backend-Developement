@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students - Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include("../partials/header") %>
+
+        <div class="container my-5">
+            <h2 class="mb-4 text-center">Student List</h2>
+            <div class="row g-4">
+                <% students.forEach(student=> { %>
+                    <div class="col-md-6">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="bi bi-person-circle"></i>
+                                    <%= student.name %>
+                                </h5>
+                                <p class="card-text">
+                                    <strong>Roll No:</strong>
+                                    <%= student.rollNo %> <br>
+                                        <strong>Course:</strong>
+                                        <%= student.course %> <br>
+                                            <strong>Batch:</strong>
+                                            <%= student.batch %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+        </div>
+
+        <%- include("../partials/footer") %>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Confirmed</title>
+    
+    <%- include('partials/cdn') %>
+    
+    <link rel="stylesheet" href="/css/submit.css">
+</head>
+<body class="bg-dark text-light">
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                
+                <div class="submission-container">
+                    <div class="text-center mb-5">
+                        <i class="bi bi-check-circle-fill text-success display-1 mb-3"></i> 
+                        <h1 class="display-4 text-white fw-bold mb-2">Submission Successful!</h1>
+                        <p class="lead text-muted">Your new product has been added to the inventory.</p>
+                    </div>
+
+                    <h3 class="data-title mb-4 border-bottom pb-2">Product Details Submitted</h3>
+                    
+                    <dl class="row data-list">
+                        
+                        <dt class="col-sm-4 col-md-3">Product Name</dt>
+                        <dd class="col-sm-8 col-md-9 text-white"><%= data.productName %></dd>
+
+                        <dt class="col-sm-4 col-md-3">Category</dt>
+                        <dd class="col-sm-8 col-md-9 text-white"><%= data.category %></dd>
+                        
+                        <dt class="col-sm-4 col-md-3">Price</dt>
+                        <dd class="col-sm-8 col-md-9 text-white">₹<%= data.price %></dd>
+
+                        <dt class="col-sm-4 col-md-3">Quantity</dt>
+                        <dd class="col-sm-8 col-md-9 text-white"><%= data.quantity %></dd>
+
+                        <dt class="col-sm-4 col-md-3">Description</dt>
+                        <dd class="col-sm-8 col-md-9 text-white text-wrap"><%= data.description || 'N/A' %></dd>
+                        
+                    </dl>
+
+                    <div class="text-center mt-5 pt-3 border-top">
+                        <a href="/" class="btn btn-outline-light btn-lg">Back to Dashboard</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

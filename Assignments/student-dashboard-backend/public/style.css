@@ -1,0 +1,19 @@
+html,body{
+    height: 100vh;
+}
+
+.navbar{
+    height: 10vh;
+}
+
+.home-page{
+    height: 60vh;
+}
+
+.contact-page{
+    height: 60vh;
+}
+
+footer{
+    height: 14vh;
+}

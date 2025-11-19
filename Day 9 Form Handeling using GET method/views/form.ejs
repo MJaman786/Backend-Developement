@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    
+    <%- include('partials/cdn') %>
+    
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                
+                <div class="form-container">
+                    <h2 class="form-title text-center mb-4"><%= title %></h2>
+                    <p class="form-subtitle text-center mb-5">Fill in the details for the new product below.</p>
+                    
+                    <form action="/form-data" method="GET">
+                        <div class="mb-4">
+                            <label for="productName" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="productName" name="productName" placeholder="e.g., Wireless Bluetooth Headphones" required>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="category" class="form-label">Category</label>
+                            <select class="form-select" id="category" name="category" required>
+                                <option selected disabled value="">Select a category...</option>
+                                <option>Electronics</option>
+                                <option>Apparel & Accessories</option>
+                                <option>Books & Media</option>
+                                <option>Home & Kitchen</option>
+                                <option>Sports & Outdoors</option>
+                            </select>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="price" class="form-label">Price</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">₹</span>
+                                    <input type="number" class="form-control" id="price" name="price" placeholder="999.00" min="0" step="0.01" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="quantity" class="form-label">Quantity</label>
+                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="100" min="1" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Description (Optional)</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Briefly describe the product, its features, or condition..."></textarea>
+                        </div>
+
+                        <div class="d-grid mt-5">
+                           <button type="submit" class="btn btn-custom btn-lg">Add Product to Inventory</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
