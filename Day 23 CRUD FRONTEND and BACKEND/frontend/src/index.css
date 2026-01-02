@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+:root {
+    --background: #020617;
+    /* Deepest blue/black */
+    --foreground: #f8fafc;
+    --primary: #6366f1;
+    /* Indigo-500 */
+    --accent: #22d3ee;
+    /* Cyan-400 */
+}
+
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Custom glow effect seen in the image background */
+.bg-glow {
+    background: radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15) 0%, rgba(2, 6, 23, 0) 50%);
+}
+
+/* Glassmorphism for the Header */
+.glass {
+    background: rgba(2, 6, 23, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
